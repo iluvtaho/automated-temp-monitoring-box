@@ -88,11 +88,57 @@ ATMB (Automated Temperature Monitoring Box) is an embedded sensor system that de
 
 ## Software
 
+The firmware is written in C++ for the Arduino IDE. It waits for motion, sweeps the temperature sensor across the room, averages three readings, and shows a verdict on the LCD.
+
 ### Requirements
 
-- LiquidCrystal_I2C (Frank de Brabander or similar)
-- DHT sensor library (Adafruit)
-- Servo and Wire are built in
+- [Arduino IDE](https://www.arduino.cc/en/software) 2.x or later
+- Arduino Uno R3 (or compatible board)
+- Libraries (install via Library Manager):
+  - `LiquidCrystal_I2C` by Frank de Brabander
+  - `DHT sensor library` by Adafruit (also install its dependency, `Adafruit Unified Sensor`, when prompted)
+  - `Servo` and `Wire` are included with the Arduino IDE
+
+### Installation
+
+1. Clone the repository:
+```bash
+   git clone https://github.com/username/Automated-temp-monitoring-box.git
+```
+2. Open `software/ATMB.ino` in the Arduino IDE.
+3. Select **Tools → Board → Arduino Uno** and the correct port under **Tools → Port**.
+4. Click **Upload**.
+
+### Configuration
+
+Settings are defined as constants at the top of the sketch:
+
+| Constant | Default | Description |
+|----------|---------|-------------|
+| `SERVO_LEFT` / `SERVO_RIGHT` | 0 / 180 | Sweep range in degrees |
+| `SWEEP_COUNT` | 3 | Number of sweeps per reading |
+| `STEP_DELAY` | 15 | Milliseconds between each servo step (lower is faster) |
+| `BUZZ_FREQ` / `BUZZ_MS` | 2000 / 3000 | Buzzer tone frequency and duration |
+
+The temperature thresholds are set inside `displayAverage()`:
+- Below 20 °C: "COLD - Set higher"
+- Above 25 °C: "HOT - Set lower"
+- Otherwise: "WARM - OK"
+
+The LCD is assumed to be at I2C address `0x27`. If your display doesn't respond, run an I2C scanner sketch to find the correct address and update `LiquidCrystal_I2C lcd(0x27, 16, 2);`.
+
+### How It Works
+
+1. **Idle:** The LCD shows "Waiting for motion..." while the PIR sensor is LOW.
+2. **Trigger:** When the PIR sensor goes HIGH, the servo sweeps left to right and back `SWEEP_COUNT` times. The DHT11 is read at the far right position on each sweep.
+3. **Average:** Valid readings are averaged. If every read fails, the LCD shows "Sensor error."
+4. **Verdict:** The average and verdict appear on the LCD, and the buzzer plays an alert pattern.
+5. **Re-arm:** The code waits until motion clears before it can trigger again. The result stays on screen until the next trigger.
+
+### Troubleshooting
+
+- **LCD blank:** Check the I2C address, and confirm SDA is on A4 and SCL on A5.
+- **Servo jitters or the board resets:** The servo shares the Uno's 5V pin. Try an external 5V supply with a shared ground.
 
 ## Credits
 
