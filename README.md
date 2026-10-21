@@ -24,8 +24,8 @@ ATMB (Automated Temperature Monitoring Box) is an embedded sensor system that de
 
 ## Hardware
 
-![Screenshot of CAD](docs/CAD_View.JPG)
-Designed in Fusion360
+<img src="docs/CAD_View.JPG" width="500">
+*Designed in Fusion360*
 
 ### Bill of Materials
 | Part | Qty | Link |
