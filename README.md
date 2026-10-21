@@ -1,19 +1,12 @@
 # Automated-temp-monitoring-box
-Research product that I got commissioned to design, code, and assemble. Uses a motion sensor to detect when someone enters a room, scans the temperature of the room, then gives a verdict whether to decrease or increase temperature.
-
-![Screenshot or photo of the finished project](docs/images/hero.png)
+Research product that I got commissioned to design, code, and assemble. Uses a motion sensor to detect when someone enters a room, scans the temperature of the room, then gives a verdict whether to decrease or increase temperature.  
+<br><br><br>
+![Photo of the finished project](docs/Final_Product.JPG)
 
 ## Table of Contents
 - [Overview](#overview)
-- [Features](#features)
 - [Hardware](#hardware)
 - [Software](#software)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
 - [Credits](#credits)
 - [Contact](#contact)
 
@@ -24,7 +17,7 @@ ATMB (Automated Temperature Monitoring Box) is an embedded sensor system that de
 - **[Choice]:** Original materials provided by client included a relay, removed because it was unnecessary (The Arduino's 5V pin is within the components’ ratings, so the relay wasn’t needed)
 - **[Choice]:** Used a 3D printed case, as opposed to the plastic box, to allow customizability and perfect fit of components
 
-## Technical Highlights
+### Technical Highlights
 - Designed the sensor layout and wiring with the client during the build session.
 - Wrote code in C++ handling servo control, sensor inputs, and display outputs.
 - Built and assembled a 3D printed enclosure using Fusion360.
@@ -64,7 +57,7 @@ ATMB (Automated Temperature Monitoring Box) is an embedded sensor system that de
 <img width="716" height="423" alt="image" src="https://github.com/user-attachments/assets/34cab088-e9fc-43b1-be73-27adbe17f143" />
 
 #### Real-life wiring
-<Do>
+![Photo of the wiring](docs/Wiring.JPG)
 #### Pinout
 | Arduino pin |	Connects to |	Function |
 |-------------|-------------|----------|
@@ -83,3 +76,4 @@ ATMB (Automated Temperature Monitoring Box) is an embedded sensor system that de
 - LiquidCrystal_I2C (Frank de Brabander or similar)
 - DHT sensor library (Adafruit)
 - Servo and Wire are built in
+
