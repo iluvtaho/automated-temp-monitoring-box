@@ -14,8 +14,8 @@ Research product that I got commissioned to design, code, and assemble. Uses a m
 ATMB (Automated Temperature Monitoring Box) is an embedded sensor system that detects when someone enters a room, scans the temperature of the room, then gives a verdict whether to decrease or increase temperature. It works by using an Arduino Uno R3 microcontroller dev-board paired with a motion sensor and temperature sensor to detect movement and temperature inside the room. A servo sweeps the temp sensor left to right and sends 3 temperature readings to the Arduino. The Arduino then calculates the average reading and compares it to the hard-coded ranges to give the verdict. The average temperature and verdict are displayed through an LCD screen.
 
 ### Design Decisions
-- **[Choice]:** Original materials provided by client included a relay, removed because it was unnecessary (The Arduino's 5V pin is within the components’ ratings, so the relay wasn’t needed)
-- **[Choice]:** Used a 3D printed case, as opposed to the plastic box, to allow customizability and perfect fit of components
+- Original materials provided by client included a relay, removed because it was unnecessary (The Arduino's 5V pin is within the other components’ ratings, so the relay wasn’t needed).
+- Used a 3D printed case, as opposed to the plastic box, to allow customizability and perfect fit of components.
 
 ### Technical Highlights
 - Designed the sensor layout and wiring with the client during the build session.
@@ -23,6 +23,9 @@ ATMB (Automated Temperature Monitoring Box) is an embedded sensor system that de
 - Built and assembled a 3D printed enclosure using Fusion360.
 
 ## Hardware
+
+![Screenshot of CAD](docs/CAD_View.JPG)
+Designed in Fusion360
 
 ### Bill of Materials
 | Part | Qty | Link |
